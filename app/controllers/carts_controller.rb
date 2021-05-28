@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
 
   def show
+    # raise enhanced_cart.inspect
+    # @render_cart = enhanced_cart.length = 0 ? 'none' : 'item'   
+
   end
 
   def add_item
@@ -26,3 +29,4 @@ class CartsController < ApplicationController
   end
 
 end
+  

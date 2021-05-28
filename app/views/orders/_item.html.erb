@@ -1,0 +1,4 @@
+<% @items.each do |item| %>
+  <%= @prodcut = Product.where(id: item[:product_id]) %>
+  <%= product[0][:name] %>
+<% end %>

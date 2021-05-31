@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])  
     @items = LineItem.where(order_id: params[:id])
     # @product = Product.where(id: @items[0][:product_id])
+    @test = Product.line_items
+    # raise @test.inspect
+
    
   end
 

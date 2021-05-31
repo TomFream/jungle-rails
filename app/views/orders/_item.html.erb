@@ -1,4 +1,5 @@
 <% @items.each do |item| %>
-  <%= @prodcut = Product.where(id: item[:product_id]) %>
-  <%= product[0][:name] %>
+  <%=item.product_id%>
+  <%= product = Product.find(9) %>
+  <p> <%= product %> </p>
 <% end %>

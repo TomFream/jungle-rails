@@ -1,0 +1,6 @@
+- reorder resume, skills, projects, everything else
+- remove lacation/phone number 
+
+- add githu  to linkedin
+- add about section. Add enuugh to get show more button, then include links to projects, etc
+- Add skills, top 3 can be pinned

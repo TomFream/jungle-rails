@@ -70,6 +70,63 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 3 characters)")
     end
 
+  end
 
+  describe '.authenticate_with_credentials' do
+    it 'returns a user object if the credentials are verified' do
+      @user = User.new(
+        first_name: "Tom",
+        last_name: "Fream",
+        email: "tom@test.com",
+        password: "test",
+        password_confirmation: "test"
+      )
+      @user.validate
+      @user.save
+
+      expect(User.authenticate_with_credentials("tom@test.com", "test")).to_not be(nil)
+    end
+
+    it 'returns nil if the credentials are not verified' do
+      @user = User.new(
+        first_name: "Tom",
+        last_name: "Fream",
+        email: "tom@test.com",
+        password: "test",
+        password_confirmation: "test"
+      )
+      @user.validate
+      @user.save
+
+      expect(User.authenticate_with_credentials("tom@test.com", "wrongpassword")).to be(nil)
+    end
+
+    it 'should return user object if extra whitespace is provided' do
+      @user = User.new(
+        first_name: "Tom",
+        last_name: "Fream",
+        email: "tom@test.com",
+        password: "test",
+        password_confirmation: "test"
+      )
+      @user.validate
+      @user.save
+
+      expect(User.authenticate_with_credentials("  tom@test.com  ", "test")).to_not be(nil)
+    end
+
+    it 'should return user object when wrong case is used' do
+      @user = User.new(
+        first_name: "Tom",
+        last_name: "Fream",
+        email: "tom@test.com",
+        password: "test",
+        password_confirmation: "test"
+      )
+      @user.validate
+      @user.save
+
+      expect(User.authenticate_with_credentials("toM@tEst.com", "test")).to_not be(nil)
+    end
   end
 end
